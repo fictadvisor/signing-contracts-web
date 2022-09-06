@@ -34,7 +34,6 @@ export default function Passport (props: Props){
 
   function checkPassportInstituteNew(value: string): boolean {
     if (!value) return true;
-    console.log(value.length)
     if (value.length !== 4) return false;
     return value.match(/^[0-9]+$/) !== null;
   }
