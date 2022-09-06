@@ -1,5 +1,6 @@
 body {
   margin: 40px;
+  font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
@@ -19,9 +20,12 @@ body {
 
 .field{
   margin-top: 20px;
-  font-size: 20px;
 }
 
 .checkbox{
   margin-bottom: 10px;
+}
+
+.country-code{
+  width: 40px;
 }

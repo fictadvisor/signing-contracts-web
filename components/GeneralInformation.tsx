@@ -4,35 +4,24 @@ interface Props {
   isParent: boolean,
 }
 
-interface State {
-  hasFathername: boolean,
-  mistakeMessage: string
-}
 
+export default function GeneralInformation(props: Props) {
 
-export default class Form extends React.Component {
-
-  props: Props;
-  state: State;
-
-  constructor(props: Props) {
-    super(props);
-
-  }
-
-  handleCheck = () =>{
-
-  }
-
-  render(){
-    return(
+  return(
+      <div>
+        <label> Форма навчання (бюджет/контракт) </label>
         <div>
           <label>
-
+            <input type="radio"/> Бюджет
           </label>
+
+          <label>
+            <input type="radio"/> Контракт
+          </label>
+
         </div>
-    );
-  }
+      </div>
+  );
 
 
 }
