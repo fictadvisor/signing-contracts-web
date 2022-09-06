@@ -28,7 +28,7 @@ export default class Form extends React.Component {
     return(
         <div>
           <label>
-            
+
           </label>
         </div>
     );

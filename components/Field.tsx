@@ -1,5 +1,6 @@
 import * as React from "react";
-import {setValue} from "../utils/utils";
+import {saveValue} from "../utils/utils";
+import {useEffect, useState} from "react";
 
 interface Props {
   label: string,
@@ -8,42 +9,27 @@ interface Props {
   onChange: Function,
 }
 
-interface State {
-  mutable: boolean,
-  isWrong: boolean,
-  value: string,
+export default function Field (props: Props) {
+
+  const [value, setValue] = useState('');
+  const [isWrong, setIsWrong] = useState(false);
+
+  function handleChange(event){
+    setValue(event.target.value);
+    setIsWrong(!props.onChange(event.target.value));
+  }
+
+  useEffect(() => {
+    saveValue(props.token, value);
+  });
+
+
+  return (
+      <div className="field">
+        <p className="label">{props.label}</p>
+        <input value={value} onChange={handleChange} />
+        {isWrong && <p className="mistake-message">{props.mistakeMessage}</p>}
+      </div>
+  )
+
 }
-
-class Field extends React.Component {
-  props: Props;
-  state: State;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      mutable: true,
-      isWrong: false,
-      value: '',
-    }
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      value: event.target.value,
-      isWrong: !this.props.onChange(event.target.value),
-    });
-    setValue(this.props.token, event.target.value);
-  }
-
-  render() {
-    return (
-        <div className="field">
-          <p className="label">{this.props.label}</p>
-          <input value={this.state.value} onChange={this.handleChange} />
-          {this.state.isWrong && <p className="mistake-message">{this.props.mistakeMessage}</p>}
-        </div>
-    )
-  }
-}
-
-export default Field;

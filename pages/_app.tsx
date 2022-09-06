@@ -1,5 +1,4 @@
 import '../styles/styles.css'
-import '../styles/Field.module.css'
 import * as React from "react";
 import Form from "../components/Form";
 
@@ -21,7 +20,7 @@ export default class Home extends React.Component {
   render() {
     return (
         <div>
-            <Form></Form>
+          <Form></Form>
         </div>
     );
   }
