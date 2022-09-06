@@ -1,43 +1,29 @@
 import * as React from "react";
 import Field from "./Field";
-import {LETTERS} from "./FullName";
+import {LETTERS} from "../utils/utils";
+import {useState} from "react";
 
 interface Props {
   isParent: boolean,
 }
 
-interface State {
-  isOldFormat: boolean
-}
+export default function Passport (props: Props){
 
-class Passport extends React.Component {
-  props: Props;
-  state: State;
+  const [isOldFormat, setIsOldFormat] = useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOldFormat: false
-    }
-  }
-
-  handleCheck = () => {
-    this.setState({isOldFormat: !this.state.isOldFormat});
-  }
-
-  static checkPassportNumberNew(value: string): boolean {
+  function checkPassportNumberNew(value: string): boolean {
     if (!value) return true;
     if (value.length !== 9) return false;
     return value.match(/^[0-9]+$/) !== null;
   }
 
-  static checkPassportNumberOld(value: string): boolean {
+  function checkPassportNumberOld(value: string): boolean {
     if (!value) return true;
     if (value.length !== 6) return false;
     return value.match(/^[0-9]+$/) !== null;
   }
 
-  static checkPassportInstituteOld(value: string): boolean {
+  function checkPassportInstituteOld(value: string): boolean {
     if (!value) return true;
     if (value.length < 10) return false;
     for (const char of value) {
@@ -46,87 +32,84 @@ class Passport extends React.Component {
     return true;
   }
 
-  static checkPassportInstituteNew(value: string): boolean {
+  function checkPassportInstituteNew(value: string): boolean {
     if (!value) return true;
+    console.log(value.length)
     if (value.length !== 4) return false;
     return value.match(/^[0-9]+$/) !== null;
   }
 
-  static checkPassportDate(value: string): boolean{
-    if (!value) return true;
-    return value.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/) != null;
+  function checkPassportDate(value: string): boolean{
+    return !value || value.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/) != null;
   }
 
-  static checkPassportSeries(value: string): boolean {
+  function checkPassportSeries(value: string): boolean {
     if (!value) return true;
     return value.length === 2 &&
         LETTERS.some(letter => letter.toUpperCase() === value[0]) &&
         LETTERS.some(letter => letter.toUpperCase() === value[1]);
   }
 
-  render(){
-    return (
+  return (
+      <div>
         <div>
-          <div>
-            <label>
-              <input type="checkbox" checked={this.state.isOldFormat} className="checkbox" onChange={this.handleCheck}/> Паспорт старого зразка
-            </label>
-          </div>
-          {
-            this.state.isOldFormat ?
+          <label>
+            <input type="checkbox" checked={isOldFormat} className="checkbox"
+                   onChange={() => setIsOldFormat(!isOldFormat)}/> Паспорт старого зразка
+          </label>
+        </div>
+        {
+          isOldFormat ?
               <div>
                 <Field
-                  label={'Серія паспорту ' + (this.props.isParent ? 'законного представника' : 'вступника')}
-                  token={(this.props.isParent ? 'parent_' : '') + 'passport_series'}
-                  mistakeMessage="Перевір, щоб серія складалась з двох великих українських літер"
-                  onChange={Passport.checkPassportSeries}
+                    label={'Серія паспорту ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_series'}
+                    mistakeMessage="Перевір, щоб серія складалась з двох великих українських літер"
+                    onChange={checkPassportSeries}
                 />
                 <Field
-                  label={'Номер паспорту ' + (this.props.isParent ? 'законного представника' : 'вступника')}
-                  token={(this.props.isParent ? 'parent_' : '') + 'passport_number'}
-                  mistakeMessage="Перевір, щоб були наявні тільки 6 цифр"
-                  onChange={Passport.checkPassportNumberOld}
+                    label={'Номер паспорту ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_number'}
+                    mistakeMessage="Перевір, щоб були наявні тільки 6 цифр"
+                    onChange={checkPassportNumberOld}
                 />
                 <Field
-                    label={'Ким виданий паспорт ' + (this.props.isParent ? 'законного представника' : 'вступника')}
-                    token={(this.props.isParent ? 'parent_' : '') + 'passport_institute'}
+                    label={'Ким виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_institute'}
                     mistakeMessage="Перевір, щоб було наявне повне ім'я органу, що видав"
-                    onChange={Passport.checkPassportInstituteOld}
+                    onChange={checkPassportInstituteOld}
                 />
                 <Field
-                    label={'Коли виданий паспорт ' + (this.props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
-                    token={(this.props.isParent ? 'parent_' : '') + 'passport_date'}
+                    label={'Коли виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_date'}
                     mistakeMessage="Перевір, щоб формат дати мав вигляд дд.мм.рррр"
-                    onChange={Passport.checkPassportDate}
+                    onChange={checkPassportDate}
                 />
               </div>
               :
-                <div>
-                  <Field
-                      label={'Номер паспорту ' + (this.props.isParent ? 'законного представника' : 'вступника')}
-                      token={(this.props.isParent ? 'parent_' : '') + 'passport_number'}
-                      mistakeMessage="Перевір, щоб були наявні тільки 9 цифр"
-                      onChange={Passport.checkPassportNumberNew}
-                  />
-                  <Field
-                      label={'Ким виданий паспорт ' + (this.props.isParent ? 'законного представника' : 'вступника')}
-                      token={(this.props.isParent ? 'parent_' : '') + 'passport_institute'}
-                      mistakeMessage="Перевір, щоб було наявне повне ім'я органу, що видав"
-                      onChange={Passport.checkPassportInstituteNew}
-                  />
-                  <Field
-                      label={'Коли виданий паспорт ' + (this.props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
-                      token={(this.props.isParent ? 'parent_' : '') + 'passport_date'}
-                      mistakeMessage="Перевір, щоб формат дати мав вигляд дд.мм.рррр"
-                      onChange={Passport.checkPassportDate}
-                  />
-                </div>
+              <div>
+                <Field
+                    label={'Номер паспорту ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_number'}
+                    mistakeMessage="Перевір, щоб були наявні тільки 9 цифр"
+                    onChange={checkPassportNumberNew}
+                />
+                <Field
+                    label={'Ким виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_institute'}
+                    mistakeMessage="Перевір, щоб було наявне повне ім'я органу, що видав"
+                    onChange={checkPassportInstituteNew}
+                />
+                <Field
+                    label={'Коли виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
+                    token={(props.isParent ? 'parent_' : '') + 'passport_date'}
+                    mistakeMessage="Перевір, щоб формат дати мав вигляд дд.мм.рррр"
+                    onChange={checkPassportDate}
+                />
+              </div>
 
-          }
+        }
 
-        </div>
-    );
-  }
+      </div>
+  );
 }
-
-export default Passport;
