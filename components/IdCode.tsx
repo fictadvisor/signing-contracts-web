@@ -23,7 +23,7 @@ export default function IdCode(props: Props){
   });
 
   return (
-      <div>
+      <div className='field'>
         <label>
           <input type="checkbox" checked={!hasCode} className="checkbox"
                  onChange={() => setHasCode(!hasCode)}/> Відмова від РНОКПП
@@ -34,7 +34,7 @@ export default function IdCode(props: Props){
                 label={'Ідентифікаційний код (РНОКПП) ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={token}
                 mistakeMessage={mistakeMessage}
-                onChange={checkValue}
+                onChange={checkValue} isBlock={false}
             />
         }
       </div>

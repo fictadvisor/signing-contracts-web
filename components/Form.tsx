@@ -13,17 +13,18 @@ export default function Form(){
     const[isAdult, setIsAdult] = useState(false);
 
     return (
-        <div>
-            <GeneralInformation isParent={false}/>
-            <hr/>
-            <input type="checkbox" className="checkbox block" onChange={() => setIsAdult(!isAdult)}/> Є 18 років
+        <div className='form'>
+            <GeneralInformation/>
+            <div className='field'>
+                <input type="checkbox" className="checkbox block" onChange={() => setIsAdult(!isAdult)}/> Є 18 років
+            </div>
             <FullName isParent={false} />
             <Passport isParent={false} />
             <LivingState isParent={false}/>
             <IdCode isParent={false} />
             <PhoneNumber isParent={false}/>
             <Field label="Електронна пошта вступника" token="email" mistakeMessage="Перевір наявність @"
-                   onChange={(value) => {return !value || value.includes("@")} }/>
+                   onChange={(value) => {return !value || value.includes("@")} } isBlock={true}/>
             { !isAdult &&
                 <div>
                     <FullName isParent={true}/>
@@ -32,10 +33,9 @@ export default function Form(){
                     <IdCode isParent={true} />
                     <PhoneNumber isParent={true}/>
                     <Field label="Електронна пошта законого представника" token="parent_email" mistakeMessage="Перевір наявність @"
-                           onChange={(value) => {return !value || value.includes("@")} }/>
+                           onChange={(value) => {return !value || value.includes("@")}} isBlock={true}/>
                 </div>
             }
-
         </div>
     )
 }

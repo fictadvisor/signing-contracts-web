@@ -17,3 +17,7 @@ export function saveValue(name: string, value: any) {
   Home.dataObject[name] = value;
   console.log(Home.dataObject);
 }
+
+export function downloadDocx() {
+
+}

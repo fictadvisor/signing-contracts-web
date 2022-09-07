@@ -39,8 +39,10 @@ export default function PhoneNumber (props: Props) {
 
 
     useEffect(() => {
-        saveValue("phone-number", countryCode+phoneNumber)
+        saveValue("phone_number", countryCode+phoneNumber)
     });
+
+    //TODO add isParent
 
     return (
         <div>
@@ -49,10 +51,12 @@ export default function PhoneNumber (props: Props) {
                        onChange={handleCheck}/> Закордонний номер
             </label>
 
+            <p className='label' > {'Номер телефону ' + (props.isParent ? 'законного представника' : 'вступника')}</p>
+
             <div>
-                <input type="text" className="country-code" value={countryCode} disabled={!isForeign}
+                <input className="country-code" value={countryCode} disabled={!isForeign}
                         onChange={handleCodeChange}/>
-                <input type="text" value={phoneNumber} className="phoneNumber"
+                <input value={phoneNumber} className="phone-number"
                         onChange={handleNumberChange}/>
             </div>
             {isWrong && <p className="mistake-message"> Перевір чи правильно вказаний код країни і номер телефону!</p>}

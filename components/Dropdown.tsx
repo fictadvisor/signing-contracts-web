@@ -11,7 +11,7 @@ export default function Dropdown(props: Props){
 
     const [value, setValue] = useState('');
 
-    const options = props.options.map((value, number) => {
+    const options = props.options.map((value) => {
         return <option value={value}>{value}</option>;
     })
 
@@ -20,8 +20,8 @@ export default function Dropdown(props: Props){
     });
 
     return (
-        <div>
-            <label>{props.label}</label>
+        <div className='field'>
+            <p className='label'>{props.label}</p>
             <select onChange={(event) => setValue(event.target.value)}>
                 {options}
             </select>

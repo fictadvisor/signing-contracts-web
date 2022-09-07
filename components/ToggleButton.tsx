@@ -26,10 +26,10 @@ export default function ToggleButton(props: Props){
             </label>
         );
     });
-
+    //TODO toggle buttons css
     return (
-        <div>
-            <p>  {props.label} </p>
+        <div className='field'>
+            <p className='label'>  {props.label} </p>
             {radioButtons}
         </div>
     );
