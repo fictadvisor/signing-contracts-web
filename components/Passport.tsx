@@ -73,13 +73,13 @@ export default function Passport (props: Props){
                     onChange={checkPassportNumberOld}
                 />
                 <Field
-                    label={'Ким виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника')}
+                    label={'Орган видачі паспорту ' + (props.isParent ? 'законного представника' : 'вступника')}
                     token={(props.isParent ? 'parent_' : '') + 'passport_institute'}
                     mistakeMessage="Перевір, щоб було наявне повне ім'я органу, що видав"
                     onChange={checkPassportInstituteOld}
                 />
                 <Field
-                    label={'Коли виданий паспорт ' + (props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
+                    label={'Дата видачі паспорту ' + (props.isParent ? 'законного представника' : 'вступника') + " (дд.мм.рррр)"}
                     token={(props.isParent ? 'parent_' : '') + 'passport_date'}
                     mistakeMessage="Перевір, щоб формат дати мав вигляд дд.мм.рррр"
                     onChange={checkPassportDate}
