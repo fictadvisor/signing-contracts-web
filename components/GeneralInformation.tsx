@@ -1,25 +1,16 @@
 import * as React from "react";
+import ToggleButton from "./ToggleButton";
 
-interface Props {
-  isParent: boolean,
-}
-
-
-export default function GeneralInformation(props: Props) {
+export default function GeneralInformation() {
 
   return(
       <div>
-        <label> Форма навчання (бюджет/контракт) </label>
-        <div>
-          <label>
-            <input type="radio"/> Бюджет
-          </label>
+          <ToggleButton options={['Бюджет', 'Конракт']} token='payment_type' label="Форма навчання (бюджет/контракт)"/>
 
-          <label>
-            <input type="radio"/> Контракт
-          </label>
+          <ToggleButton options={['Денна', 'Заочна']} token='learning_mode' label='Форма навчання (денна/заочна)'/>
 
-        </div>
+          <ToggleButton options={['121','123', '126']} token='specialization' label='Спеціальність'/>
+
       </div>
   );
 

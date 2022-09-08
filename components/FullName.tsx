@@ -25,31 +25,33 @@ export default function FullName(props: Props) {
 
     return (
         <div>
-            <label>
-                <input type="checkbox" checked={!hasFathername} className="checkbox"
-                       onChange={() => setHasFathername(!hasFathername)}/> Немає по-батькові
-            </label>
             <Field
                 label={'Прізвище ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'last_name'}
                 mistakeMessage={mistakeMessage}
-                onChange={checkValue}
+                onChange={checkValue} isBlock={true}
             />
             <Field
                 label={'Ім\'я ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'first_name'}
                 mistakeMessage={mistakeMessage}
-                onChange={checkValue}
+                onChange={checkValue} isBlock={true}
             />
-            {
+            <div className='field'>
+                <label>
+                    <input type="checkbox" checked={!hasFathername} className="checkbox"
+                           onChange={() => setHasFathername(!hasFathername)}/> Немає по-батькові
+                </label>
+                {
                 hasFathername &&
                 <Field
                     label={'По-батькові ' + (props.isParent ? 'законного представника' : 'вступника')}
                     token={(props.isParent ? 'parent_' : '') + 'father_name'}
                     mistakeMessage={mistakeMessage}
-                    onChange={checkValue}
+                    onChange={checkValue} isBlock={false}
                 />
-            }
+                }
+            </div>
         </div>
     );
 }

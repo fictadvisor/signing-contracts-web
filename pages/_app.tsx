@@ -1,6 +1,7 @@
 import '../styles/styles.css'
 import * as React from "react";
 import Form from "../components/Form";
+import {downloadDocx} from "../utils/utils";
 
 export default class Home extends React.Component {
   static dataObject: object = {};
@@ -9,18 +10,12 @@ export default class Home extends React.Component {
     super(props);
   }
 
-  static setValue(name: string, value: string) {
-    console.log('1213');
-  }
-
-  static downloadDocx() {
-
-  }
-
   render() {
     return (
-        <div>
+        <div className="wrapper">
+          <h1> Інформація для договору про навчання </h1>
           <Form></Form>
+          <button onClick={() => downloadDocx}>Надіслати</button>
         </div>
     );
   }
