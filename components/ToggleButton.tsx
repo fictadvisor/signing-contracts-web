@@ -9,7 +9,7 @@ interface Props{
 
 export default function ToggleButton(props: Props){
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(props.options[0]);
 
     useEffect(() => {
         saveValue(props.token, value);
@@ -21,16 +21,19 @@ export default function ToggleButton(props: Props){
 
     const radioButtons = props.options.map((elem) => {
         return(
-            <label>
-                <input type='radio' name={props.token} value={elem} onChange={handleChange}/> {elem}
-            </label>
+            <span className='radio-button'>
+                <input type='radio' id={elem} name={props.token} value={elem} onChange={handleChange} checked={value === elem}/>
+                <label className='toggle-label' htmlFor={elem}> {elem} </label>
+            </span>
         );
     });
     //TODO toggle buttons css
     return (
         <div className='field'>
             <p className='label'>  {props.label} </p>
-            {radioButtons}
+            <div className='switch-toggle'>
+                {radioButtons}
+            </div>
         </div>
     );
 

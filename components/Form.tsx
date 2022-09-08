@@ -14,10 +14,12 @@ export default function Form(){
 
     return (
         <div className='form'>
+            <legend><span className="number">1</span> Загальна інформація </legend>
             <GeneralInformation/>
             <div className='field'>
                 <input type="checkbox" className="checkbox block" onChange={() => setIsAdult(!isAdult)}/> Є 18 років
             </div>
+            <legend><span className="number">2</span> Дані про вступника </legend>
             <FullName isParent={false} />
             <Passport isParent={false} />
             <LivingState isParent={false}/>
@@ -27,6 +29,7 @@ export default function Form(){
                    onChange={(value) => {return !value || value.includes("@")} } isBlock={true}/>
             { !isAdult &&
                 <div>
+                    <legend><span className="number">3</span> Дані про законного представника </legend>
                     <FullName isParent={true}/>
                     <Passport isParent={true} />
                     <LivingState isParent={true}/>

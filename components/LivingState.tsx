@@ -43,19 +43,19 @@ export default function LivingState (props: Props) {
                 label={'Населений пункт ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'settlement'}
                 mistakeMessage='Перевір, щоб були наявні тільки українськи літери'
-                onChange={checkSettlement}
+                onChange={checkSettlement} isBlock={true}
             />
             <Field
                 label={'Вулиця, дім, квартира ' + (props.isParent ? 'законного представника' : 'вступника') + " (за наявністю)"}
                 token={(props.isParent ? 'parent_' : '') + 'address'}
                 mistakeMessage=''
-                onChange={() => {return true}}
+                onChange={() => {return true}} isBlock={true}
             />
             <Field
                 label={'Поштовий індекс ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'index'}
                 mistakeMessage= 'Перевір, щоб були наявні тільки 5 цифр'
-                onChange={checkIndex}
+                onChange={checkIndex} isBlock={true}
             />
         </div>
     );
