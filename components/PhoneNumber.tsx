@@ -39,10 +39,8 @@ export default function PhoneNumber (props: Props) {
 
 
     useEffect(() => {
-        saveValue("phone_number", countryCode+phoneNumber)
+        saveValue((props.isParent ? 'parent_' : '') + 'phone_number', countryCode+phoneNumber)
     });
-
-    //TODO add isParent
 
     return (
         <div>
