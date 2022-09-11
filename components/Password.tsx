@@ -5,7 +5,7 @@ import {downloadDocx} from "../utils/utils";
 
 interface Props{
     isVisible: boolean
-    onClick: any
+    onClick: Function
 }
 
 export default function Password(props: Props){

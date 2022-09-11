@@ -2,7 +2,7 @@ import * as React from "react";
 import {useState} from "react";
 import Field from "./Field";
 import Dropdown from "./Dropdown";
-import {LETTERS, REGIONS} from "../utils/utils";
+import {LETTERS, REGIONS, saveValue} from "../utils/utils";
 
 
 interface Props{
@@ -31,7 +31,10 @@ export default function LivingState (props: Props) {
         <div className='block'>
             <label>
                 <input type="checkbox" checked={isRegionalCenter} className="checkbox"
-                       onChange={() => setIsRegionalCenter(!isRegionalCenter)}/> Проживаю в Києві або обласному центрі
+                       onChange={() => {
+                         setIsRegionalCenter(!isRegionalCenter);
+                         saveValue((props.isParent ? 'parent_' : '') + 'region', '')
+                       }}/> Проживаю в Києві або обласному центрі
             </label>
 
             {!isRegionalCenter &&
