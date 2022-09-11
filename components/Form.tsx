@@ -3,14 +3,20 @@ import FullName from "./FullName";
 import Passport from "./Passport";
 import Field from "./Field";
 import IdCode from "./IdCode";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import LivingState from "./LivingState";
 import PhoneNumber from "./PhoneNumber";
 import GeneralInformation from "./GeneralInformation";
+import {clearParent, saveValue} from "../utils/utils";
 
 export default function Form(){
 
     const[isAdult, setIsAdult] = useState(false);
+
+    useEffect(() => {
+      saveValue('is_adult', isAdult);
+      if (isAdult) clearParent();
+    })
 
     return (
         <main className='form'>
@@ -32,8 +38,9 @@ export default function Form(){
             <PhoneNumber isParent={false}/>
 
             <div className='block'>
-                <Field label="Електронна пошта вступника" token="email" mistakeMessage="Перевір наявність @"
-                       onChange={(value) => {return !value || value.includes("@")} } isField={false}/>
+                <Field label="Електронна пошта" token="email" mistakeMessage="Перевір наявність @"
+                       onChange={(value) => {return !value || value.includes("@")} } isField={false}
+                       isParent={false}/>
             </div>
             { !isAdult &&
                 <div>
@@ -44,8 +51,9 @@ export default function Form(){
                     <IdCode isParent={true} />
                     <PhoneNumber isParent={true}/>
                     <div className='block'>
-                        <Field label="Електронна пошта законого представника" token="parent_email" mistakeMessage="Перевір наявність @"
-                               onChange={(value) => {return !value || value.includes("@")}} isField={false}/>
+                        <Field label="Електронна пошта" token="email" mistakeMessage="Перевір наявність @"
+                               onChange={(value) => {return !value || value.includes("@")}} isField={false}
+                               isParent={true}/>
                     </div>
                 </div>
             }

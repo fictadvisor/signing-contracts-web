@@ -9,8 +9,8 @@ export default function Home() {
 
     const [isClicked, setIsClicked] = useState(false);
 
-    function handleClick(isRight){
-        if (isRight) downloadDocx()
+    async function handleClick(isRight){
+        if (isRight) await downloadDocx()
         else setIsClicked(false);
     }
 

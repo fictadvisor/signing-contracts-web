@@ -11,22 +11,21 @@ export default function IdCode(props: Props){
 
   const [hasCode, setHasCode] = useState(true);
   const mistakeMessage = 'Перевір, щоб були наявні тільки 10 цифр';
-  const token = (props.isParent ? 'parent_' : '') + 'id_code';
+  const token = 'id_code';
 
   function checkValue(value): boolean {
     if (isNaN(parseInt(value))) return false;
     return value.length === 10;
   }
 
-  useEffect(() => {
-    saveValue(token, hasCode);
-  });
-
   return (
       <div className='block'>
         <label>
           <input type="checkbox" checked={!hasCode} className="checkbox"
-                 onChange={() => setHasCode(!hasCode)}/> Відмова від РНОКПП
+                 onChange={() => {
+                   setHasCode(!hasCode)
+                   saveValue((props.isParent ? 'parent_' : '') + 'id_code', '')
+                 }}/> Відмова від РНОКПП
         </label>
         {
             hasCode &&
