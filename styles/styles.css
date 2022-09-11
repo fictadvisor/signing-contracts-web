@@ -13,16 +13,13 @@ h1{
   margin-bottom: 30px;
 }
 
-/*Will delete last 3 rows of this*/
 .wrapper {
   max-width: 500px;
   margin: 50px auto;
-  /*padding: 10px 20px;*/
-  /*background-color: #f4f7f8;*/
-  /*border-radius: 8px;*/
 }
 
-.block{
+
+.block-heading, .block{
   background-color: #f4f7f8;
   border-radius: 8px;
   padding: 15px 30px;
@@ -30,10 +27,11 @@ h1{
   border: 1px solid RGBA(128,128,128,0.35);
 }
 
-/*Will delete*/
-/*.form{*/
-/*  margin: 20px;*/
-/*}*/
+.block{
+  padding-top: 30px;
+}
+
+
 
 input[type="text"],
 input[type="password"],
@@ -45,8 +43,8 @@ select{
   padding: 15px;
   width: 94%;
   background: #e8eeef;
-  color: #8a97a0;
-  margin-bottom: 30px;
+  color: #384047;
+  margin-bottom: 20px;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 }
 
@@ -129,14 +127,6 @@ button{
 button:active{
   transform: scale(0.98);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-.submit-button{
-
-}
-
-.password-button{
-
 }
 
 .label{

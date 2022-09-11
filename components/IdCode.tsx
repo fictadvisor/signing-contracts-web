@@ -30,10 +30,11 @@ export default function IdCode(props: Props){
         {
             hasCode &&
             <Field
-                label={'Ідентифікаційний код (РНОКПП) ' + (props.isParent ? 'законного представника' : 'вступника')}
+                label={'Ідентифікаційний код (РНОКПП)'}
                 token={token}
                 mistakeMessage={mistakeMessage}
                 onChange={checkValue} isField={false}
+                isParent={props.isParent}
             />
         }
       </div>

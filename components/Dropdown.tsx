@@ -23,6 +23,7 @@ export default function Dropdown(props: Props){
         <div className='field'>
             <p className='label'>{props.label}</p>
             <select onChange={(event) => setValue(event.target.value)}>
+                <option disabled selected hidden>Оберіть область</option>
                 {options}
             </select>
         </div>

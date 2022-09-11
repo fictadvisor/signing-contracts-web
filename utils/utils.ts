@@ -24,6 +24,15 @@ export function saveValue(name: string, value: any) {
   console.log(dataObject);
 }
 
+export function clearParent(){
+  for (const name in dataObject) {
+    if (name.startsWith('parent_')) {
+      dataObject[name] = '';
+    }
+  }
+  console.log(dataObject);
+}
+
 export async function downloadDocx() {
   const{ data } = await axios.post('http://mizuvia.com:5000/documents/download', {
     data: dataObject,

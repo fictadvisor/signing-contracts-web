@@ -43,22 +43,25 @@ export default function LivingState (props: Props) {
                           token={(props.isParent ? 'parent_' : '') + 'region'}/>
             }
             <Field
-                label={'Населений пункт ' + (props.isParent ? 'законного представника' : 'вступника')}
-                token={(props.isParent ? 'parent_' : '') + 'settlement'}
+                label={'Населений пункт'}
+                token={'settlement'}
                 mistakeMessage='Перевір, щоб були наявні тільки українськи літери'
                 onChange={checkSettlement} isField={true}
+                isParent={props.isParent}
             />
             <Field
-                label={'Вулиця, дім, квартира ' + (props.isParent ? 'законного представника' : 'вступника') + " (за наявністю)"}
-                token={(props.isParent ? 'parent_' : '') + 'address'}
+                label={'Вулиця, дім, квартира'}
+                token={'address'}
                 mistakeMessage=''
                 onChange={() => {return true}} isField={true}
+                isParent={props.isParent}
             />
             <Field
-                label={'Поштовий індекс ' + (props.isParent ? 'законного представника' : 'вступника')}
-                token={(props.isParent ? 'parent_' : '') + 'index'}
+                label={'Поштовий індекс'}
+                token={'index'}
                 mistakeMessage= 'Перевір, щоб були наявні тільки 5 цифр'
                 onChange={checkIndex} isField={false}
+                isParent={props.isParent}
             />
         </div>
     );
