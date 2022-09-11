@@ -53,8 +53,8 @@ export default function Passport (props: Props){
   function checkPassportSeriesInt(value: string): boolean {
     if (!value) return true;
     return value.length === 2 &&
-        value[0].toLowerCase().match(/^[a-z]$/) !== null &&
-        value[1].toLowerCase().match(/^[a-z]$/) !== null;
+        value[0].match(/^[A-Z]$/) !== null &&
+        value[1].match(/^[A-Z]$/) !== null;
   }
 
   function checkPassportInstituteInt(value: string): boolean {

@@ -20,7 +20,7 @@ export default function Form(){
 
     return (
         <main className='form'>
-            <legend className='block'><span className="number">1</span> Загальна інформація </legend>
+            <legend className='block-heading'><span className="number">1</span> Загальна інформація </legend>
 
             <div className='block'>
                 <GeneralInformation/>
@@ -29,7 +29,7 @@ export default function Form(){
                 </div>
             </div>
 
-            <legend className='block'><span className="number">2</span> Дані про вступника </legend>
+            <legend className='block-heading'><span className="number">2</span> Дані про вступника </legend>
 
             <FullName isParent={false} />
             <Passport isParent={false} />
@@ -44,7 +44,7 @@ export default function Form(){
             </div>
             { !isAdult &&
                 <div>
-                    <legend className='block'><span className="number">3</span> Дані про законного представника </legend>
+                    <legend className='block-heading'><span className="number">3</span> Дані про законного представника </legend>
                     <FullName isParent={true}/>
                     <Passport isParent={true} />
                     <LivingState isParent={true}/>
