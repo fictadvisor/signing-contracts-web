@@ -24,18 +24,18 @@ export default function FullName(props: Props) {
     }
 
     return (
-        <div>
+        <div className='block'>
             <Field
                 label={'Прізвище ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'last_name'}
                 mistakeMessage={mistakeMessage}
-                onChange={checkValue} isBlock={true}
+                onChange={checkValue} isField={true}
             />
             <Field
                 label={'Ім\'я ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'first_name'}
                 mistakeMessage={mistakeMessage}
-                onChange={checkValue} isBlock={true}
+                onChange={checkValue} isField={true}
             />
             <div className='field'>
                 <label>
@@ -48,7 +48,7 @@ export default function FullName(props: Props) {
                     label={'По-батькові ' + (props.isParent ? 'законного представника' : 'вступника')}
                     token={(props.isParent ? 'parent_' : '') + 'father_name'}
                     mistakeMessage={mistakeMessage}
-                    onChange={checkValue} isBlock={false}
+                    onChange={checkValue} isField={false}
                 />
                 }
             </div>

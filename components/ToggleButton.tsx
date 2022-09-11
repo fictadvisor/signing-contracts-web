@@ -21,17 +21,17 @@ export default function ToggleButton(props: Props){
 
     const radioButtons = props.options.map((elem) => {
         return(
-            <span className='radio-button'>
+            <span className='toggle-button'>
                 <input type='radio' id={elem} name={props.token} value={elem} onChange={handleChange} checked={value === elem}/>
-                <label className='toggle-label' htmlFor={elem}> {elem} </label>
+                <label htmlFor={elem}> {elem} </label>
             </span>
         );
     });
-    //TODO toggle buttons css
+
     return (
         <div className='field'>
             <p className='label'>  {props.label} </p>
-            <div className='switch-toggle'>
+            <div className='toggle-buttons'>
                 {radioButtons}
             </div>
         </div>

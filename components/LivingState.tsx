@@ -28,7 +28,7 @@ export default function LivingState (props: Props) {
     }
 
     return (
-        <div>
+        <div className='block'>
             <label>
                 <input type="checkbox" checked={isRegionalCenter} className="checkbox"
                        onChange={() => setIsRegionalCenter(!isRegionalCenter)}/> Проживаю в Києві або обласному центрі
@@ -43,19 +43,19 @@ export default function LivingState (props: Props) {
                 label={'Населений пункт ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'settlement'}
                 mistakeMessage='Перевір, щоб були наявні тільки українськи літери'
-                onChange={checkSettlement} isBlock={true}
+                onChange={checkSettlement} isField={true}
             />
             <Field
                 label={'Вулиця, дім, квартира ' + (props.isParent ? 'законного представника' : 'вступника') + " (за наявністю)"}
                 token={(props.isParent ? 'parent_' : '') + 'address'}
                 mistakeMessage=''
-                onChange={() => {return true}} isBlock={true}
+                onChange={() => {return true}} isField={true}
             />
             <Field
                 label={'Поштовий індекс ' + (props.isParent ? 'законного представника' : 'вступника')}
                 token={(props.isParent ? 'parent_' : '') + 'index'}
                 mistakeMessage= 'Перевір, щоб були наявні тільки 5 цифр'
-                onChange={checkIndex} isBlock={true}
+                onChange={checkIndex} isField={false}
             />
         </div>
     );
