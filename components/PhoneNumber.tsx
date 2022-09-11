@@ -19,7 +19,7 @@ export default function PhoneNumber (props: Props) {
     }
 
     function checkValue(code: string, number: string): boolean{
-        if (!number) return true;
+        if ((!number && !code) || (!number && code==='+380')) return true;
         if (code[0] !== '+') return false;
         if (code.length < 2 || code.length > 4) return false;
         if (number.length !== 9) return false;
@@ -43,7 +43,7 @@ export default function PhoneNumber (props: Props) {
     });
 
     return (
-        <div>
+        <div className='block'>
             <label>
                 <input type="checkbox" checked={isForeign} className="checkbox"
                        onChange={handleCheck}/> Закордонний номер
@@ -51,7 +51,7 @@ export default function PhoneNumber (props: Props) {
 
             <p className='label' > {'Номер телефону ' + (props.isParent ? 'законного представника' : 'вступника')}</p>
 
-            <div>
+            <div className='phone-number-container'>
                 <input className="country-code" value={countryCode} disabled={!isForeign}
                         onChange={handleCodeChange}/>
                 <input value={phoneNumber} className="phone-number"

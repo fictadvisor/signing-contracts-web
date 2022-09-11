@@ -13,11 +13,13 @@ export const REGIONS: Array<string> = [
   'Харківська область', 'Херсонська область', 'Хмельницька область','Черкаська область', 'Чернівецька область','Чернігівська область'
 ]
 
+const dataObject: object = {};
+
 export function saveValue(name: string, value: any) {
-  Home.dataObject[name] = value;
-  console.log(Home.dataObject);
+  dataObject[name] = value;
+  console.log(dataObject);
 }
 
 export function downloadDocx() {
-
+  console.log('ФАЙЛ Є!')
 }
