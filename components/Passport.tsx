@@ -26,11 +26,7 @@ export default function Passport (props: Props){
 
   function checkPassportInstituteOld(value: string): boolean {
     if (!value) return true;
-    if (value.length < 10) return false;
-    for (const char of value) {
-      if (!LETTERS.some(letter => letter === char)) return false;
-    }
-    return true;
+    return value.length >= 10;
   }
 
   function checkPassportInstituteNew(value: string): boolean {
