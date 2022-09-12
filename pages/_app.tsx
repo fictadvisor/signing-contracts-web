@@ -11,7 +11,7 @@ export default function Home() {
 
     async function handleClick(isRight){
         if (isRight) await downloadDocx()
-        else setIsClicked(false);
+        setIsClicked(false);
     }
 
   return (
