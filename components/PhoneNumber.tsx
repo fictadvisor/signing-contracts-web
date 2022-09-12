@@ -57,7 +57,7 @@ export default function PhoneNumber (props: Props) {
                 <input value={phoneNumber} className="phone-number"
                         onChange={handleNumberChange}/>
             </div>
-            {isWrong && <p className="mistake-message"> Перевір чи правильно вказаний код країни і номер телефону!</p>}
+            {isWrong && <p className="mistake-message">⚠️ Перевір чи правильно вказаний код країни і номер телефону!</p>}
         </div>
     );
 }
