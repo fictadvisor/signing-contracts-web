@@ -22,7 +22,7 @@ export default function Password(props: Props){
     function handleClick(){
         const temp = value === '123';
         setIsRight(temp);
-        if (!temp) setTimeout( () => {resetState()}, 3000);
+        setTimeout( () => {resetState()}, 3000);
         setTimeout( () => {props.onClick(temp)}, 3000);
     }
 
