@@ -43,6 +43,7 @@ export function fillFields(data) {
     }
     saveValue(name, data[name]);
   }
+  saveValue('phone_number', data['country_code'] + data['phone_number']);
 }
 
 export async function downloadDocx() {
