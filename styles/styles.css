@@ -193,4 +193,9 @@ button:active{
   margin-bottom: 10px;
 }
 
+#find-button{
+  width: 50%;
+  padding: 10px 10px 10px 10px;
+}
+
 

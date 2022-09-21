@@ -52,9 +52,9 @@ export default function PhoneNumber (props: Props) {
             <p className='label' > {'Номер телефону ' + (props.isParent ? 'законного представника' : 'вступника')}</p>
 
             <div className='phone-number-container'>
-                <input className="country-code" value={countryCode} disabled={!isForeign}
+                <input id={props.isParent ? '': 'country_code'} className="country-code" value={countryCode} disabled={!isForeign}
                         onChange={handleCodeChange}/>
-                <input value={phoneNumber} className="phone-number"
+                <input id={props.isParent ? '': 'phone_number'} value={phoneNumber} className="phone-number"
                         onChange={handleNumberChange}/>
             </div>
             {isWrong && <p className="mistake-message">⚠️ Перевір чи правильно вказаний код країни і номер телефону!</p>}

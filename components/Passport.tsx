@@ -63,7 +63,7 @@ export default function Passport (props: Props){
       <div className='block'>
         <div>
           <label>
-            <input type="checkbox" checked={isOldFormat} className="checkbox" disabled={isInternational}
+            <input  id={props.isParent ? '' : 'is_old_format'} type="checkbox" checked={isOldFormat} className="checkbox" disabled={isInternational}
                    onChange={() => setIsOldFormat(!isOldFormat)}/> Паспорт старого зразка
           </label>
         </div>

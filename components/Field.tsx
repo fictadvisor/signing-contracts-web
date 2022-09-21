@@ -29,7 +29,7 @@ export default function Field (props: Props) {
   return (
       <div className={ props.isField ? 'field' : ''}>
         <p className="label">{props.label + ' ' + (props.isParent ? 'законного представника' : 'вступника')}</p>
-        <input type='text' value={value} onChange={handleChange}/>
+        <input id={props.isParent ? '': props.token} type='text' value={value} onChange={handleChange}/>
         {isWrong && <p className="mistake-message">{'⚠️ ' + props.mistakeMessage}</p>}
       </div>
   )

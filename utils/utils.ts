@@ -1,7 +1,3 @@
-// import Home from "../pages/_app";
-// import * as fs from "fs";
-// import Docxtemplater from "docxtemplater";
-
 import axios from "axios";
 
 export const LETTERS: Array<string> = [
@@ -32,14 +28,36 @@ export function clearParent(){
   }
 }
 
+export function fillFields(data) {
+  for (const name in data) {
+
+    if (name === 'learning_mode' || name === 'specialization') {
+      const inputField = (<HTMLInputElement>document.getElementById(data[name]));
+      inputField.checked = true;
+    }
+      else {
+      const inputField = (<HTMLInputElement>document.getElementById(name));
+      if (inputField) {
+        inputField.value = data[name];
+      }
+    }
+    saveValue(name, data[name]);
+  }
+}
+
 export async function downloadDocx() {
   console.log('wow')
-  const{ data } = await axios.post('http://localhost:5000/documents/download', {data: dataObject}, {
+  const {data} = await axios.post('http://localhost:5000/documents/download', {data: dataObject}, {
     // auth: {
     //   username: 'hoshion',
     //   password: 'wow',
     // }
   });
-
-  window.open(`http://localhost:5000/documents/download?id=${data.id}`);
+  console.log('reply');
+  window.open(`http://localhost:5000/documents/download?id=${data.id1}`);
+  console.log('open1');
+  window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
+  console.log('open2');
 }
+
+

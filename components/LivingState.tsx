@@ -30,7 +30,7 @@ export default function LivingState (props: Props) {
     return (
         <div className='block'>
             <label>
-                <input type="checkbox" checked={isRegionalCenter} className="checkbox"
+                <input id={props.isParent ? '' : 'is_regional_center'} type="checkbox" checked={isRegionalCenter} className="checkbox"
                        onChange={() => {
                          setIsRegionalCenter(!isRegionalCenter);
                          saveValue((props.isParent ? 'parent_' : '') + 'region', '')
