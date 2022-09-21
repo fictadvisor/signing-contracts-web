@@ -1,6 +1,6 @@
 import * as React from "react";
 import Field from "./Field";
-import {LETTERS} from "../utils/utils";
+import {LETTERS, saveValue} from "../utils/utils";
 import {useState} from "react";
 
 interface Props {
@@ -64,13 +64,19 @@ export default function Passport (props: Props){
         <div>
           <label>
             <input  id={props.isParent ? '' : 'is_old_format'} type="checkbox" checked={isOldFormat} className="checkbox" disabled={isInternational}
-                   onChange={() => setIsOldFormat(!isOldFormat)}/> Паспорт старого зразка
+                   onChange={() => {
+                     setIsOldFormat(!isOldFormat);
+                     saveValue((props.isParent ? 'parent_' : '') + 'passport_series', '');
+                   }}/> Паспорт старого зразка
           </label>
         </div>
         <div>
           <label>
             <input type="checkbox" checked={isInternational} className="checkbox" disabled={isOldFormat}
-                   onChange={() => setIsInternational(!isInternational)}/> Закордонний паспорт
+                   onChange={() => {
+                     setIsInternational(!isInternational);
+                     saveValue((props.isParent ? 'parent_' : '') + 'passport_series', '');
+                   }}/> Закордонний паспорт
           </label>
         </div>
         {

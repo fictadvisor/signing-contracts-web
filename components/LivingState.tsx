@@ -33,7 +33,7 @@ export default function LivingState (props: Props) {
                 <input id={props.isParent ? '' : 'is_regional_center'} type="checkbox" checked={isRegionalCenter} className="checkbox"
                        onChange={() => {
                          setIsRegionalCenter(!isRegionalCenter);
-                         saveValue((props.isParent ? 'parent_' : '') + 'region', '')
+                         saveValue((props.isParent ? 'parent_' : '') + 'region', '');
                        }}/> Проживаю в Києві або обласному центрі
             </label>
 
