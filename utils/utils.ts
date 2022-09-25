@@ -20,30 +20,16 @@ export function saveValue(name: string, value: any) {
   console.log(dataObject);
 }
 
+export function checkValue(name: string){
+  return dataObject[name];
+}
+
 export function clearParent(){
   for (const name in dataObject) {
     if (name.startsWith('parent_')) {
       dataObject[name] = '';
     }
   }
-}
-
-export function fillFields(data) {
-  for (const name in data) {
-
-    if (name === 'learning_mode' || name === 'specialization') {
-      const inputField = (<HTMLInputElement>document.getElementById(data[name]));
-      inputField.checked = true;
-    }
-      else {
-      const inputField = (<HTMLInputElement>document.getElementById(name));
-      if (inputField) {
-        inputField.value = data[name];
-      }
-    }
-    saveValue(name, data[name]);
-  }
-  saveValue('phone_number', data['country_code'] + data['phone_number']);
 }
 
 export async function downloadDocx() {

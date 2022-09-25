@@ -48,6 +48,11 @@ select{
 
 select{
   width: 100%;
+  max-width: 100%;
+}
+
+option{
+  font-size: 15px;
 }
 
 .phone-number-container{
@@ -144,9 +149,10 @@ button:active{
 
 .toggle-buttons {
   outline: 2px solid #4bc970;
-  border-radius: 7%;
+  border-radius: 10%;
   display: inline-block;
   margin-top: 3px;
+  overflow: hidden;
 }
 
 .toggle-button input {
