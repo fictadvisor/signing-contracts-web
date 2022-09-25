@@ -33,18 +33,14 @@ export function clearParent(){
 }
 
 export async function downloadDocx() {
-  console.log('wow')
   const {data} = await axios.post('http://localhost:5000/documents/download', {data: dataObject}, {
     // auth: {
     //   username: 'hoshion',
     //   password: 'wow',
     // }
   });
-  console.log('reply');
   window.open(`http://localhost:5000/documents/download?id=${data.id1}`);
-  console.log('open1');
-  window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
-  console.log('open2');
+  if (dataObject['payment_type'] === 'Контракт') window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
 }
 
 
