@@ -20,6 +20,10 @@ export function saveValue(name: string, value: any) {
   console.log(dataObject);
 }
 
+export function checkValue(name: string){
+  return dataObject[name];
+}
+
 export function clearParent(){
   for (const name in dataObject) {
     if (name.startsWith('parent_')) {
@@ -28,37 +32,15 @@ export function clearParent(){
   }
 }
 
-export function fillFields(data) {
-  for (const name in data) {
-
-    if (name === 'learning_mode' || name === 'specialization') {
-      const inputField = (<HTMLInputElement>document.getElementById(data[name]));
-      inputField.checked = true;
-    }
-      else {
-      const inputField = (<HTMLInputElement>document.getElementById(name));
-      if (inputField) {
-        inputField.value = data[name];
-      }
-    }
-    saveValue(name, data[name]);
-  }
-  saveValue('phone_number', data['country_code'] + data['phone_number']);
-}
-
 export async function downloadDocx() {
-  console.log('wow')
   const {data} = await axios.post('http://localhost:5000/documents/download', {data: dataObject}, {
     // auth: {
     //   username: 'hoshion',
     //   password: 'wow',
     // }
   });
-  console.log('reply');
   window.open(`http://localhost:5000/documents/download?id=${data.id1}`);
-  console.log('open1');
-  window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
-  console.log('open2');
+  if (dataObject['payment_type'] === 'Контракт') window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
 }
 
 

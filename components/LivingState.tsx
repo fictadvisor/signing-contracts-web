@@ -38,7 +38,7 @@ export default function LivingState (props: Props) {
             </label>
 
             {!isRegionalCenter &&
-                <Dropdown options={REGIONS}
+                <Dropdown options={REGIONS} default='Оберіть область' values={REGIONS}
                           label={'Область ' + (props.isParent ? 'законного представника' : 'вступника')}
                           token={(props.isParent ? 'parent_' : '') + 'region'}/>
             }

@@ -6,6 +6,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: #384047;
+  overflow: hidden;
 }
 
 h1{
@@ -48,7 +49,9 @@ select{
 
 select{
   width: 100%;
+  max-width: 100%;
 }
+
 
 .phone-number-container{
   display: flex;
@@ -144,9 +147,10 @@ button:active{
 
 .toggle-buttons {
   outline: 2px solid #4bc970;
-  border-radius: 7%;
+  border-radius: 11%;
   display: inline-block;
   margin-top: 3px;
+  overflow: hidden;
 }
 
 .toggle-button input {
@@ -196,6 +200,45 @@ button:active{
 #find-button{
   width: 50%;
   padding: 10px 10px 10px 10px;
+}
+
+#cookiePopup {
+  background-color: #ffffff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  width: 30%;
+  margin: 0 auto;
+  box-shadow: 0 0 2em rgba(5, 0, 31, 0.15);
+  text-align: justify;
+  line-height: 1.8em;
+  padding: 1.4em 2em;
+  border-radius: 6px;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+}
+
+#cookiePopup p {
+  text-align: center;
+  margin: 1.4em 0;
+}
+#cookiePopup button {
+  background-color: #3ac162;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 1em 1.4em;
+  display: block;
+  position: relative;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.hide > * {
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 
