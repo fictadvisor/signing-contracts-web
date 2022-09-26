@@ -8,13 +8,12 @@ export default function Home() {
 
     const [isClicked, setIsClicked] = useState(false);
 
-
     return (
         <div id='main'>
             { !isClicked &&
                 <div id="cookiePopup">
                     <p>
-                        Зверніть увагу, що внесені передаються на сервер для формування документів, але не зберігаються.
+                        Зверніть увагу, що внесені дані передаються на сервер для формування документів, але не зберігаються.
                         Збереження даних функціонально неможливе.
                     </p>
                     <button id="accept" onClick={() => {
