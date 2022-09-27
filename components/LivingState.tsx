@@ -15,7 +15,7 @@ export default function LivingState (props: Props) {
 
     function checkSettlement(value: string): boolean {
         if (!value) return true;
-        for (const char of value) {
+        for (const char of value.replace('-','')) {
             if (!LETTERS.some(letter => letter === char)) return false;
         }
         return true;
