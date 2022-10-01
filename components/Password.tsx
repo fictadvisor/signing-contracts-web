@@ -1,7 +1,6 @@
 import Field from "./Field";
 import * as React from "react";
 import {useEffect, useRef, useState} from "react";
-import {downloadDocx} from "../utils/utils";
 
 interface Props{
     isVisible: boolean

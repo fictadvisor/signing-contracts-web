@@ -182,20 +182,20 @@ button:active{
   font-weight: bold;
 }
 
-.password-button{
-  padding: 19px 39px 18px 39px;
-  color: #FFF;
-  background-color: deepskyblue;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-  width: 100%;
-  border: solid cornflowerblue;
-  border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
-  margin-bottom: 10px;
-}
+/*.download-button{*/
+/*  padding: 19px 39px 18px 39px;*/
+/*  color: #FFF;*/
+/*  background-color: deepskyblue;*/
+/*  font-size: 18px;*/
+/*  text-align: center;*/
+/*  font-style: normal;*/
+/*  border-radius: 5px;*/
+/*  width: 100%;*/
+/*  border: solid cornflowerblue;*/
+/*  border-width: 1px 1px 3px;*/
+/*  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;*/
+/*  margin-bottom: 10px;*/
+/*}*/
 
 #find-button{
   width: 50%;

@@ -32,15 +32,17 @@ export function clearParent(){
   }
 }
 
-export async function downloadDocx() {
-  const {data} = await axios.post('http://localhost:5000/documents/download', {data: dataObject}, {
-    // auth: {
-    //   username: 'hoshion',
-    //   password: 'wow',
-    // }
-  });
-  window.open(`http://localhost:5000/documents/download?id=${data.id1}`);
-  if (dataObject['payment_type'] === 'Контракт') window.open(`http://localhost:5000/documents/download?id=${data.id2}`);
+
+export async function downloadDocx1() {
+  const {data} = await axios.post('http://212.111.193.241:5000/documents/download', {data: dataObject, fileType: 'Договір'}, {});
+  window.open(`http://212.111.193.241:5000/documents/download?id=${data.id}`);
 }
+
+export async function downloadDocx2() {
+  const {data} = await axios.post('http://212.111.193.241:5000/documents/download', {data: dataObject, fileType: 'Контракт'}, {});
+  window.open(`http://212.111.193.241:5000/documents/download?id=${data.id}`);
+}
+
+
 
 
